@@ -22,16 +22,15 @@ const casosdeexitoController = {
                     db.RedesSociales.findAll()
                     .then(redessociales => {
 
-                        console.log('Casos de Éxito: ');
-                        console.log(casosdeexito[0].imagenesCasosDeExito[0].imagen);
-
                         //res.json(casosdeexito)
                         res.render('casosdeexito',{resultados,usuarioLogueado,redessociales,casosdeexito});
         
                     })
 
             })
+
         })
+
     
     },
     'visualizacion': function(req,res){
