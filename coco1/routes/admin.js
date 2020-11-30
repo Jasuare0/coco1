@@ -15,7 +15,7 @@ let multer = require('multer');
 
 var storageProductos = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/productos')
+        cb(null,path.join(__dirname,'../public/images/productos'))
     },
     filename: function (req,file,cb){
 
@@ -43,7 +43,7 @@ var uploadProductos = multer({storage: storageProductos})
 
 var storageBlogs = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/blogs')
+        cb(null,path.join(__dirname,'../public/images/blogs'))
     },
     filename: function (req,file,cb){
 
@@ -71,7 +71,7 @@ var uploadBlogs = multer({storage: storageBlogs})
 
 var storageCarousel = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/carousel')
+        cb(null,path.join(__dirname,'../public/images/carousel'))
     },
     filename: function (req,file,cb){
 
@@ -102,7 +102,8 @@ var uploadCarousel = multer({storage: storageCarousel})
 
 var storageClientes = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/clientesAliados')
+        cb(null,path.join(__dirname,'../public/images/clientesAliados'))
+
     },
     filename: function (req,file,cb){
 
@@ -132,7 +133,7 @@ var uploadClientes = multer({storage: storageClientes})
 
 var storageBlogNuevo = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/blogs')
+        cb(null,path.join(__dirname,'../public/images/blogs'))
     },
     filename: function (req,file,cb){
 
@@ -162,7 +163,8 @@ var uploadBlogNuevo = multer({storage: storageBlogNuevo})
 
 var storageCaracteristicaNueva = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/caracteristicas')
+        cb(null,path.join(__dirname,'../public/images/caracteristicas'))
+
     },
     filename: function (req,file,cb){
 
@@ -192,7 +194,8 @@ var uploadCaracteristicaNueva = multer({storage: storageCaracteristicaNueva})
 
 var storageClienteNuevo = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/clientesAliados')
+        cb(null,path.join(__dirname,'../public/images/clientesAliados'))
+
     },
     filename: function (req,file,cb){
 
@@ -222,7 +225,8 @@ var uploadClienteNuevo = multer({storage: storageClienteNuevo})
 
 var storageCarouselNuevo = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/carousel')
+        cb(null,path.join(__dirname,'../public/images/carousel'))
+
     },
     filename: function (req,file,cb){
 
@@ -252,7 +256,7 @@ var uploadCarouselNuevo = multer({storage: storageCarouselNuevo})
 
 var storageProductoNuevo = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/productos')
+        cb(null,path.join(__dirname,'../public/images/productos'))
     },
     filename: function (req,file,cb){
 
@@ -284,7 +288,7 @@ var uploadProductoNuevo = multer({storage: storageProductoNuevo})
 
 var storageLogoNuevo = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/logo')
+        cb(null,path.join(__dirname,'../public/images/logo'))
     },
     filename: function (req,file,cb){
 
@@ -312,7 +316,7 @@ var uploadLogoNuevo = multer({storage: storageLogoNuevo})
 
 var storageImagenCasoExito = multer.diskStorage({
     destination: function(req,file,cb) {
-        cb(null,'public/images/casosdeexito')
+        cb(null,path.join(__dirname,'../public/images/casosdeexito'))
     },
     filename: function (req,file,cb){
 

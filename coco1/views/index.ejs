@@ -68,7 +68,7 @@
           <% for(let i=0; i<productos.length; i++) {%>
             <div class="internal-container-imagenes">
               <% if(productos[i].imagenesProductos != '') { %>
-                <img src="../images/productos/<%= productos[i].imagenesProductos[0].imagen %>" alt="" class="imagen-productos">
+                <img src="/images/productos/<%= productos[i].imagenesProductos[0].imagen %>" alt="" class="imagen-productos">
 
               <% } %>
               <h2 class="tituloNombreProducto"><%= productos[i].nombre %></h2>
