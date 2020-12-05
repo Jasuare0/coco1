@@ -10,8 +10,23 @@ body {
 
 @media only screen and (max-width: 425px) {
 
+    .containerNavBar{
+        width: 100%;
+    
+    }
+    
+    .imagenLogoNavBar{
+        width: 120px;
+    }
+    
+    .itemsNavBar{
+        padding-left: 10px;
+    
+    }
+
     .container-link-usuario{
         margin-left:30px;
+        
      }
     
      .link-usuario{
@@ -223,6 +238,21 @@ body {
 /* PORTRAITS TABLETS AND LARGE PHONES*/
 
 @media only screen and (min-width: 426px) {
+
+    .containerNavBar{
+        width: 100%;
+    
+    }
+    
+    .imagenLogoNavBar{
+        width: 120px;
+    }
+    
+    .itemsNavBar{
+        padding-left:10px;
+    
+    }
+
 
     .container-link-usuario{
         margin-left:30px;
@@ -440,6 +470,20 @@ body {
 
 @media only screen and (min-width: 768px) {
 
+    .containerNavBar{
+        width: 100%;
+    
+    }
+    
+    .imagenLogoNavBar{
+        width: 120px;
+    }
+    
+    .itemsNavBar{
+        padding-left:10px;
+    
+    }
+
     .container-link-usuario{
         margin-left:30px;
      }
@@ -654,8 +698,23 @@ body {
 
 @media only screen and (min-width: 992px) {
 
+    .containerNavBar{
+        width: 100%;
+    
+    }
+    
+    .imagenLogoNavBar{
+        width: 120px;
+    }
+    
+    .itemsNavBar{
+        padding-left:30px;
+    
+    }
+
     .container-link-usuario{
         margin-left:30px;
+
      }
     
      .link-usuario{
@@ -867,6 +926,21 @@ body {
 /* EXTRALARGE DEVICES */
 
 @media only screen and (min-width: 1200px) {
+
+
+    .containerNavBar{
+        width: 100%;
+    
+    }
+    
+    .imagenLogoNavBar{
+        width: 120px;
+    }
+    
+    .itemsNavBar{
+        padding-left:30px;
+    
+    }
 
     .container-link-usuario{
         margin-left:30px;
