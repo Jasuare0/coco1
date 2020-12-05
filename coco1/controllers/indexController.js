@@ -8,7 +8,11 @@ const indexController = {
         .then(resultados=>{
             db.ClientesAliados.findAll()
             .then(clientes=>{
-                db.Carousel.findAll()
+                db.Carousel.findAll({
+                    where: {
+                        ubicacion: 'Inicio',
+                    }
+                })
                 .then(carousel=>{
 
                     db.RedesSociales.findAll()
@@ -48,7 +52,11 @@ const indexController = {
         db.Inicio.findAll()
         .then(resultados => {
 
-            db.Carousel.findAll()
+            db.Carousel.findAll({
+                where: {
+                    ubicacion: 'Nosotros',
+                }
+            })
             .then(carousel=>{
                 db.RedesSociales.findAll()
                 .then(redessociales => {
@@ -85,7 +93,11 @@ const indexController = {
                 include: [{association: "imagenesProductos"}]
             })
             .then(productos => {
-                db.Carousel.findAll()
+                db.Carousel.findAll({
+                    where: {
+                        ubicacion: 'Productos',
+                    }
+                })
                 .then(carousel => {
                     
                     db.RedesSociales.findAll()
@@ -231,7 +243,11 @@ const indexController = {
         
         db.Inicio.findAll()
         .then(resultados=>{
-            db.Carousel.findAll()
+            db.Carousel.findAll({
+                where: {
+                    ubicacion: 'Contactenos',
+                }
+            })
             .then(carousel => {
                 
                 db.RedesSociales.findAll()
