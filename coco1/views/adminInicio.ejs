@@ -132,7 +132,7 @@
                     <th scope="col" class="tabla-columna-numero">#</th>
                     <th scope="col" class="tabla-columna-imagen">Imagen</th>
                     <th scope="col" class="tabla-columna-nombreArchivo">Nombre Archivo</th>
-                    <th scope="col" class="tabla-columna-nombre"></th>
+                    <th scope="col" class="tabla-columna-nombre">Ubicación</th>
                     <th scope="col" class="tabla-columna-editar">Editar</th>
                     <th scope="col" class="tabla-columna-eliminar">Eliminar</th>
 
@@ -144,7 +144,7 @@
                       <th scope="row"><%= j + 1 %></th>
                       <td><img src="../images/carousel/<%= carouseles[j].imagen %>" alt="..." class="img-thumbnail imagenes-aliados"></td>
                       <td><%= carouseles[j].imagen %></td>
-                      <td></td>
+                      <td><%= carouseles[j].ubicacion %></td>
                       <td><button type="button" class="btn btn-primary"><a href="/admin/inicio/carousel/<%= carouseles[j].id %>" class="linkEditar">Editar</a></button></td>
                       <td><button type="button" class="btn btn-danger"><a href="/admin/inicio/carousel/eliminar/<%= carouseles[j].id %>" class="linkEditar">Eliminar</a></button></td>
                     </tr>

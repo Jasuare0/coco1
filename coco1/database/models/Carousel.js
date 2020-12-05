@@ -7,7 +7,11 @@ module.exports = (sequelize, Types) =>{
         },
         imagen: {
             type: Types.TEXT,
-        }
+        },
+        ubicacion: {
+            type: Types.STRING,
+        },
+
     },
     {
         tableName: "carousel",
