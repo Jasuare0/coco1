@@ -1361,10 +1361,9 @@ const adminController = {
 
                 db.Carousel.create({
                     imagen: req.files[0].filename,
+                    ubicacion: req.body.ubicacion,
                 })
-                
-        
-    
+                    
                 let ubicacionPrevia = 'Inicio';
                 let direccionPrevia = 'inicio';
 
@@ -1418,22 +1417,38 @@ const adminController = {
 
     'ubicacionCarousel': function(req,res){
         
-        db.Carousel.update({
-            ubicacion: req.body.ubicacion,
-        },
-        {
-            where: {
-                id: req.params.id,
-            }
-        })
-        .then(resultado => {
-
-            let ubicacionPrevia = 'Inicio';
-            let direccionPrevia = 'inicio';
-    
-            res.redirect('/admin/confirmacionaccionbd/?ubicacionprevia='+ ubicacionPrevia +'&direccionprevia=' + direccionPrevia);
+        let usuarioLogueado = req.session.usuario;
         
-        })
+        if(usuarioLogueado == undefined){
+
+            usuarioLogueado = ''
+
+        }
+
+
+        if(usuarioLogueado != ''){
+
+            db.Carousel.update({
+                ubicacion: req.body.ubicacion,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                }
+            })
+            .then(resultado => {
+    
+                let ubicacionPrevia = 'Inicio';
+                let direccionPrevia = 'inicio';
+        
+                res.redirect('/admin/confirmacionaccionbd/?ubicacionprevia='+ ubicacionPrevia +'&direccionprevia=' + direccionPrevia);
+            
+            })
+    
+        }else{
+            res.redirect('/users');
+
+        }
     
     },
 

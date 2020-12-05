@@ -44,6 +44,18 @@
         <form class="formulario" action="/admin/inicio/carousel/crear" method="POST"  enctype="multipart/form-data">
 
           <div class="form-group">
+
+            <label>Ubicación Imagen</label>
+            <br/>
+            <select class="form-control" name="ubicacion">
+                <option>Inicio</option>
+                <option>Nosotros</option>
+                <option>Productos</option>
+                <option>Servicios</option>
+                <option>Contactenos</option>
+            </select>
+            <br/>
+            
             <label for="cambiarImagen">Seleccionar Imagen</label>
             <input type="file" class="form-control-file" id="cambiarImagen" name="imagenNuevaBlog">
             <small id="emailHelp" class="form-text text-muted">Recomendaciones: </small>
