@@ -1416,6 +1416,27 @@ const adminController = {
 
     },
 
+    'ubicacionCarousel': function(req,res){
+        
+        db.Carousel.update({
+            ubicacion: req.body.ubicacion,
+        },
+        {
+            where: {
+                id: req.params.id,
+            }
+        })
+        .then(resultado => {
+
+            let ubicacionPrevia = 'Inicio';
+            let direccionPrevia = 'inicio';
+    
+            res.redirect('/admin/confirmacionaccionbd/?ubicacionprevia='+ ubicacionPrevia +'&direccionprevia=' + direccionPrevia);
+        
+        })
+    
+    },
+
     'clientes': function(req,res){
         let usuarioLogueado = req.session.usuario;
         

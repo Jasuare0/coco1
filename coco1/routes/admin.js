@@ -355,6 +355,8 @@ router.post('/inicio/carousel/crear', uploadCarouselNuevo .any(),adminController
 router.get('/inicio/carousel/:id', adminController.editCarousel);
 router.post('/inicio/carousel/:id', uploadCarousel.any(), adminController.actualizacionCarousel);
 router.get('/inicio/carousel/eliminar/:id', adminController.eliminarCarousel);
+router.post('/inicio/carousel/ubicacion/:id', adminController.ubicacionCarousel);
+
 
 router.get('/inicio/clientes/crear', adminController.crearClientes);
 router.post('/inicio/clientes/crear', uploadClienteNuevo.any(), adminController.crearClientesEnBD);

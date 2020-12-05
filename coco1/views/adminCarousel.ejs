@@ -41,15 +41,59 @@
     <div class="external-container-section">
 
       <div class="internal-container-section">
-        <form class="formulario" action="/admin/inicio/carousel/<%= carousel.id %>" method="POST"  enctype="multipart/form-data">
+        <form class="formulario" action="/admin/inicio/carousel/ubicacion/<%= carousel.id %>" method="POST">
 
           <div class="form-group">
             <label>Imagen</label>
             <br/>
             <img src="/images/carousel/<%= carousel.imagen %>" alt="..." class="img-thumbnail imagenCarousel">
+            <br/>
+            <label>Ubicación Imagen</label>
+            <br/>
+            <select class="form-control" name="ubicacion">
+              <% if(carousel.ubicacion == 'Inicio') { %>
+                <option selected><%= carousel.ubicacion %></option>
+              <% }else{ %>
+                <option>Inicio</option>
+              <% } %>
+              <% if(carousel.ubicacion == 'Nosotros') { %>
+                <option selected><%= carousel.ubicacion %></option>
+              <% }else{ %>
+                <option>Nosotros</option>
+              <% } %>
+              <% if(carousel.ubicacion == 'Productos') { %>
+                <option selected><%= carousel.ubicacion %></option>
+              <% }else{ %>
+                <option>Productos</option>
+              <% } %>
+              <% if(carousel.ubicacion == 'Servicios') { %>
+                <option selected><%= carousel.ubicacion %></option>
+              <% }else{ %>
+                <option>Servicios</option>
+              <% } %>
+              <% if(carousel.ubicacion == 'Contactenos') { %>
+                <option selected><%= carousel.ubicacion %></option>
+              <% }else{ %>
+                <option>Contactenos</option>
+              <% } %>
+
+            </select>
+
           </div>
 
 
+          <button type="submit" class="btn btn-primary">Guardar nueva ubicación</button>
+        </form>
+    
+      </div>
+    </div>
+
+
+    <div class="external-container-section">
+
+      <div class="internal-container-section">
+
+        <form class="formulario" action="/admin/inicio/carousel/<%= carousel.id %>" method="POST"  enctype="multipart/form-data">
           <div class="form-group">
             <label for="cambiarImagen">Cambiar Imagen</label>
             <input type="file" class="form-control-file" id="cambiarImagen" name="imagenNuevaBlog">
@@ -62,11 +106,8 @@
           </div>
 
 
-
           <button type="submit" class="btn btn-primary">Actualizar Imagen</button>
         </form>
-    
-    
     
       </div>
     </div>
