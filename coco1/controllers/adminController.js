@@ -60,8 +60,19 @@ const adminController = {
                                 include: [{association: "imagenesProductos"}]
                         })
                             .then(productos => {
+                                
+                                db.Servicios.findAll({
+                            
+                                    where: {
+                                        pagina_inicio: 'Si'
+                                    },
+    
+                                    include: [{association: "imagenesServicios"}]
+                                })
+                                .then(servicios => {
+                                    res.render('adminInicio',{resultado,clientes,carouseles,usuarioLogueado,redessociales,productos, resultados: resultado,servicios});
 
-                                res.render('adminInicio',{resultado,clientes,carouseles,usuarioLogueado,redessociales,productos, resultados: resultado});
+                                })
 
                             })
 

@@ -160,6 +160,85 @@ const indexController = {
         })
 
      },
+     'servicios': function(req,res){
+
+
+        db.Inicio.findAll()
+        .then(resultados => {
+
+            db.Servicios.findAll({
+                include: [{association: "imagenesServicios"}]
+            })
+            .then(servicios => {
+                db.Carousel.findAll({
+                    where: {
+                        ubicacion: 'Servicios',
+                    }
+                })
+                .then(carousel => {
+                    
+                    db.RedesSociales.findAll()
+                    .then(redessociales => {
+                        let usuarioLogueado = req.session.usuario;
+                        
+                        if(usuarioLogueado == undefined){
+    
+                            usuarioLogueado = ''
+    
+                        }
+    
+                        console.log('Resultado Precio:');
+                        console.log(servicios[0].precio);
+
+                        res.render('servicios',{servicios, carousel,usuarioLogueado,redessociales,resultados});
+        
+                    })
+    
+                })
+    
+            })
+    
+
+        })
+
+
+    },
+    'detalleServicio': function(req,res){
+
+        db.Inicio.findAll()
+        .then(resultados => {
+
+            db.Servicios.findByPk(req.params.id,{include: [{association: "imagenesServicios"}]})
+            .then(servicio =>{
+                db.RedesSociales.findAll()
+                .then(redessociales =>{
+    
+                    db.CaracteristicasServicios.findAll({
+                        where: {
+                            servicio_id: req.params.id,
+                        }
+                    })
+                    .then(caracteristicas => {
+                        let usuarioLogueado = req.session.usuario;
+    
+                        if(usuarioLogueado == undefined){
+    
+                            usuarioLogueado = ''
+    
+                        }
+    
+                        res.render('DetalleServicio',{usuarioLogueado,servicio,redessociales,caracteristicas,resultados})
+        
+                    })
+        
+                })
+        
+            })
+    
+
+        })
+
+     },
     
     // 'blog': function(req,res){
 

@@ -1,27 +1,31 @@
 module.exports = (sequelize, Types) =>{
-    const ImagenesServicios = sequelize.define('ImagenesServicios',{
+    const CaracteristicasServicios = sequelize.define('CaracteristicasServicios',{
         id: {
             autoIncrement: true,
             primaryKey: true,
             type: Types.INTEGER,
         },
-        imagen: {
+        caracteristica: {
             type: Types.STRING,
+        },
+        descripcion: {
+            type: Types.TEXT,
+        },
+        imagen: {
+            type: Types.TEXT,
         },
         servicio_id: {
             type: Types.INTEGER,
         }
     },
     {
-        tableName: "imagenesservicios",
+        tableName: "caracteristicasservicios",
         underscored: true,
         timestamps: true,
         createdAt: 'created_at',
-        updatedAt: 'updated_at',
-        deletedAt: 'deleted_at',   
+        updatedAt: 'updated_at',  
     });
 
-
-    return ImagenesServicios;
+    return CaracteristicasServicios;
 }
 

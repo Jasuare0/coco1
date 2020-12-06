@@ -3,6 +3,7 @@ var router = express.Router();
 var adminController = require('../controllers/adminController');
 var confirmacionController = require('../controllers/confirmacionController');
 var casosdeexitoController = require('../controllers/casosdeexitoController');
+var serviciosController = require('../controllers/serviciosController');
 
 
 // INICIO PARA CARGAR ARCHIVOS CON MULTER
@@ -339,6 +340,65 @@ var storageImagenCasoExito = multer.diskStorage({
 
 var uploadImagenCasoExito  = multer({storage: storageImagenCasoExito })
 
+
+// Para cargar imagenes de Servicios
+
+var storageImagenServicio = multer.diskStorage({
+    destination: function(req,file,cb) {
+        cb(null,path.join(__dirname,'../public/images/servicios'))
+    },
+    filename: function (req,file,cb){
+
+        // console.log(path.basename(file.originalname))
+
+        // Para obtener el nombre del archivo sin la extensión
+        // path.basename(file.originalname, path.extname(file.originalname))
+        // Asigna los datos de la fecha actual timeStamp para generar un codigo de identificación único
+        // Date.now() 
+
+        // Para extraer la extensión del archivo solamente.
+        // path.extname(file.originalname)
+
+
+        cb(null, path.basename(file.originalname, path.extname(file.originalname)) + '-' + Date.now()  + path.extname(file.originalname))
+
+    }
+
+})
+
+var uploadImagenServicio  = multer({storage: storageImagenServicio })
+
+
+
+
+// Para cargar imagenes de Características de los Servicios
+
+var storageImagenCaracteristicasServicio = multer.diskStorage({
+    destination: function(req,file,cb) {
+        cb(null,path.join(__dirname,'../public/images/caracteristicasServicios'))
+    },
+    filename: function (req,file,cb){
+
+        // console.log(path.basename(file.originalname))
+
+        // Para obtener el nombre del archivo sin la extensión
+        // path.basename(file.originalname, path.extname(file.originalname))
+        // Asigna los datos de la fecha actual timeStamp para generar un codigo de identificación único
+        // Date.now() 
+
+        // Para extraer la extensión del archivo solamente.
+        // path.extname(file.originalname)
+
+
+        cb(null, path.basename(file.originalname, path.extname(file.originalname)) + '-' + Date.now()  + path.extname(file.originalname))
+
+    }
+
+})
+
+var uploadImagenCaracteristicasServicio   = multer({storage: storageImagenCaracteristicasServicio  })
+
+
 // FIN PARA CARGAR ARCHIVOS CON MULTER
 
 
@@ -372,6 +432,7 @@ router.get('/inicio/productos/sacar/:id', adminController.sacarProductosInicio);
 
 router.get('/nosotros', adminController.nosotros);
 router.post('/nosotros', adminController.actualizacionDatosNosotros);
+
 router.get('/productos', adminController.productos);
 
 router.get('/productos/crear', adminController.crearProducto);
@@ -398,6 +459,7 @@ router.get('/productos/:id/sacardelcarousel', adminController.sacarProductoCarou
 
 router.get('/productos/eliminar/:id', adminController.eliminarProducto);
 
+
 router.get('/casosdeexito', casosdeexitoController.visualizacion);
 router.get('/casosdeexito/eliminar/:id', casosdeexitoController.eliminar);
 router.get('/casosdeexito/editar/:id', casosdeexitoController.edicion);
@@ -416,6 +478,37 @@ router.post('/casosdeexito/agregar', casosdeexitoController.crearCasoDeExito);
 // router.post('/blogs/crear/nuevo',  uploadBlogNuevo.any(), adminController.crearEnBDNuevoBlog);
 
 // router.get('/blogs/eliminar/:id', adminController.eliminarBlog);
+
+
+router.get('/servicios', serviciosController.servicios);
+
+router.get('/servicios/crear', serviciosController.crearServicio);
+router.post('/servicios/crear', uploadImagenServicio.any(), serviciosController.generaServicio);
+
+router.get('/servicios/:id', serviciosController.edicionServicio);
+router.post('/servicios/:id', uploadImagenServicio.any(), serviciosController.actualizacionServicio);
+
+router.post('/servicios/:id/cambiarimagen/:idImagen',uploadImagenServicio.any(),serviciosController.edicionImagenServicio);
+
+router.get('/servicios/:id/eliminarimagen/:idImagen',serviciosController.eliminarImagenServicio);
+
+router.post('/servicios/:id/sumarimagenservicio',uploadImagenServicio.any(),serviciosController.sumarImagenServicio);
+
+router.get('/servicios/:id/caracteristicas/:idCaracteristica', serviciosController.editarCaracteristicaServicio);
+router.post('/servicios/:id/caracteristicas/:idCaracteristica', uploadImagenCaracteristicasServicio.any(), serviciosController.actualizacionCaracteristicaServicio);
+
+router.get('/servicios/:id/caracteristicas', serviciosController.crearCaracteristicaServicio);
+router.post('/servicios/:id/caracteristicas',uploadImagenCaracteristicasServicio.any(), serviciosController.sumarCaracteristicaServicio);
+
+router.get('/servicios/:id/caracteristicas/eliminar/:idCaracteristica', serviciosController.eliminarCaracteristicaServicio);
+
+router.get('/servicios/:id/sacardelcarousel', serviciosController.sacarServicioCarousel);
+
+router.get('/servicios/eliminar/:id', serviciosController.eliminarServicio);
+
+router.get('/inicio/servicios', serviciosController.serviciosInicio);
+router.get('/inicio/servicios/sacar/:id', serviciosController.sacarServiciosInicio);
+
 
 
 module.exports = router;

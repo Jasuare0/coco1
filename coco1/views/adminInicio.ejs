@@ -235,6 +235,58 @@
     </div>
 
 
+
+
+    <div class="external-container-section">
+
+      <div class="internal-container-section">
+
+          <h2 for="exampleInputPassword1">Servicios en la Página de Inicio</h2>
+          <table class="table table-hover tabla-productos-inicio">
+              <thead>
+                <tr>
+                  <th scope="col" class="tabla-columna-numero">#</th>
+                  <th scope="col" class="tabla-columna-imagen">Imagen</th>
+                  <th scope="col" class="tabla-columna-nombre">Nombre</th>
+                  <th scope="col" class="tabla-columna-descripcion">Descripción Corta</th>
+                  <th scope="col" class="tabla-columna-editar">Editar</th>
+                  <th scope="col" class="tabla-columna-eliminar">Eliminar</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let j=0; j<servicios.length; j++) {%>
+                  <tr>
+                    <th scope="row"><%= servicios[j].id %></th>
+                    <% if(servicios[j].imagenesServicios != '' && servicios[j].imagenesServicios != null) {%>
+                      <td><img src="../images/servicios/<%= servicios[j].imagenesServicios[0].imagen %>" alt="..." class="img-thumbnail imagenes-aliados"></td>
+                    
+                    <% }else{ %>
+                      <td></td>
+                    
+                    <% } %>
+                    <td><%= servicios[j].nombre %></td>
+                    <td><%= servicios[j].descripcion %></td>
+                    <td><button type="button" class="btn btn-primary"><a href="/admin/servicios/<%= servicios[j].id %>" class="linksClientes">Editar</a></button></td>
+                    <td><button type="button" class="btn btn-danger"><a href="/admin/servicios/<%= servicios[j].id %>/sacardelcarousel" class="linksClientes">Eliminar</a></button></td>
+                  </tr>
+
+
+                <% } %>
+              </tbody>
+            </table>
+
+            <button type="button" class="btn btn-primary"><a href="/admin/inicio/servicios" class="linksClientes"> + Agregar Servicio a la Página de Inicio</a></button>
+
+      </div>
+
+  </div>
+
+
+
+
+
+
     <div class="external-container-section">
 
       <div class="internal-container-section">

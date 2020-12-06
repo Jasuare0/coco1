@@ -9,6 +9,9 @@ router.get('/', indexController.index);
 router.get('/nosotros', indexController.nosotros);
 router.get('/productos', indexController.productos);
 router.get('/productos/:id', indexController.detalleProducto);
+router.get('/servicios', indexController.servicios);
+router.get('/servicios/:id', indexController.detalleServicio);
+
 // router.get('/blogs', indexController.blog);
 // router.get('/blogs/:id', indexController.blogDetalle);
 router.get('/contactenos', indexController.contactenos);

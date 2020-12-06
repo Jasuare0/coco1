@@ -44,7 +44,7 @@
     <div class="external-container-section">
 
       <div class="internal-container-section">
-        <h2 class="header-slogan">PORTAFOLIO DE PRODUCTOS</h2>
+        <h2 class="header-slogan">PORTAFOLIO DE SERVICIOS</h2>
       </div>
 
     </div>
@@ -54,11 +54,11 @@
 
       <div class="internal-container-section">
 
-        <% for(let i=0; i<productos.length; i++) {%>
+        <% for(let i=0; i<servicios.length; i++) {%>
           <div class="external-container-productos">
             <div class="internal-container-productos">
-              <% if(productos[i].imagenesProductos != ''){%>
-                <img src="../images/productos/<%= productos[i].imagenesProductos[0].imagen %>" alt="" class="imagen-producto">
+              <% if(servicios[i].imagenesServicios != ''){%>
+                <img src="../images/servicios/<%= servicios[i].imagenesServicios[0].imagen %>" alt="" class="imagen-producto">
               
               <% }else{ %>
                 <img src="" alt="" class="imagen-producto">
@@ -66,12 +66,12 @@
               <% } %>
             </div>
             <div class="internal-container-paragraph-productos">
-              <h2 class="titulo-producto"><%= productos[i].nombre %></h2>
-              <p class="paragraph-producto"><%= productos[i].descripcion %></p>
+              <h2 class="titulo-producto"><%= servicios[i].nombre %></h2>
+              <p class="paragraph-producto"><%= servicios[i].descripcion %></p>
 
-              <% if(productos[i].precio != '') { %>
+              <% if(servicios[i].precio != '' && servicios[i].precio != null ) { %>
                 <p class="paragraph-productos">
-                  <s>Precio: $ <%= productos[i].precio %></s>
+                  <s>Precio: $ <%= servicios[i].precio %></s>
                 </p>
               <% }else{ %>
                 <!-- <p class="paragraph-productos">
@@ -79,9 +79,9 @@
                 </p> -->
               <% } %>
 
-              <% if(productos[i].precio != '') {  %>
+              <% if(servicios[i].precio != '' && servicios[i].precio != null ) {  %>
                 <p class="paragraph-productos">
-                  <b>Promoción: $ <%= productos[i].preciocondescuento %></b>
+                  <b>Promoción: $ <%= servicios[i].preciocondescuento %></b>
                 </p>
               <% }else{  %>
                 <!-- <p class="paragraph-productos">
@@ -89,7 +89,7 @@
                 </p> -->
               <% } %>
 
-              <a href="/productos/<%= productos[i].id %>">Ver más...</a>
+              <a href="/servicios/<%= servicios[i].id %>">Ver más...</a>
             </div>
           </div>
   
