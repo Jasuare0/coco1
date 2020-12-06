@@ -4,8 +4,10 @@ const nodemailer = require('nodemailer');
 const mailController = {
 
     'enviandomail': async function(req,res){
-        
-        const {nombre,email,telefono,comentario} = req.body;
+
+
+        const {nombre,email,telefono,comentario,emailEmpresa} = req.body;
+
 
         contentHTML = `
 
@@ -37,8 +39,8 @@ const mailController = {
 
         const info = await transporter.sendMail({
             from: "'EDG Consultores' <edgconstructores@javiersuarezdominguez.com>",
-            to: 'edgconstructores@javiersuarezdominguez.com',
-            bcc:'edgconstructorespruebas@gmail.com',
+            to: emailEmpresa,            
+            bcc: 'edgconstructores@javiersuarezdominguez.com',
             subject: 'Datos del Formulario',
             // text: 'Hello World',
             html: contentHTML
@@ -46,6 +48,8 @@ const mailController = {
         });
 
         console.log('Mensaje Enviado', info.messageId);
+
+
 
         res.redirect('/contactenos/confirmacion')
 
