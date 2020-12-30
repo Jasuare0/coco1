@@ -4,6 +4,7 @@ var adminController = require('../controllers/adminController');
 var confirmacionController = require('../controllers/confirmacionController');
 var casosdeexitoController = require('../controllers/casosdeexitoController');
 var serviciosController = require('../controllers/serviciosController');
+var fuentesColoresController = require('../controllers/fuentesColoresController');
 
 
 // INICIO PARA CARGAR ARCHIVOS CON MULTER
@@ -509,6 +510,7 @@ router.get('/servicios/eliminar/:id', serviciosController.eliminarServicio);
 router.get('/inicio/servicios', serviciosController.serviciosInicio);
 router.get('/inicio/servicios/sacar/:id', serviciosController.sacarServiciosInicio);
 
+router.get('/fuentescolores', fuentesColoresController.traerfuentesColores);
 
 
 module.exports = router;
