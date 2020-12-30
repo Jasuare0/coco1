@@ -2,3 +2,15 @@
     color: white;
 }
 
+.nav-link:link, .nav-link:visited, .nav-link:active {
+    text-decoration:none;
+}
+
+.nav-link:link, .nav-link:visited, .nav-link:active {
+    color: white;
+}
+
+.nav-link:hover {
+    color: grey;
+}
+
