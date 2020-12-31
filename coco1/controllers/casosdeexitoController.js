@@ -22,9 +22,18 @@ const casosdeexitoController = {
                     db.RedesSociales.findAll()
                     .then(redessociales => {
 
+                        db.Fuentes.findAll({
+                            where: {
+                                status: 'Selected',
+                            }
+                        })
+                        .then(fuentes => {
                         //res.json(casosdeexito)
-                        res.render('casosdeexito',{resultados,usuarioLogueado,redessociales,casosdeexito});
+                        res.render('casosdeexito',{resultados,usuarioLogueado,redessociales,casosdeexito,fuentes});
         
+
+                        })
+
                     })
 
             })

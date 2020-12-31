@@ -27,16 +27,25 @@ const indexController = {
                                 include: [{association: "imagenesProductos"}]
                         })
                         .then(productos => {
-                            let usuarioLogueado = req.session.usuario;
 
-                            if(usuarioLogueado == undefined){
+                            db.Fuentes.findAll({
+                                where: {
+                                    status: 'Selected',
+                                }
+                            })
+                            .then(fuentes => {
+                                let usuarioLogueado = req.session.usuario;
 
-                                usuarioLogueado = ''
+                                if(usuarioLogueado == undefined){
+    
+                                    usuarioLogueado = ''
+    
+                                }
 
-                            }
-
-
-                            res.render('index',{resultados,clientes,carousel,usuarioLogueado,redessociales, productos});
+    
+                                res.render('index',{resultados,clientes,carousel,usuarioLogueado,redessociales, productos,fuentes});
+    
+                            })
     
                         })
     
@@ -62,17 +71,26 @@ const indexController = {
                 .then(redessociales => {
                     db.Nosotros.findAll()
                     .then(nosotros => {
-                        let usuarioLogueado = req.session.usuario;
+
+                        db.Fuentes.findAll({
+                            where: {
+                                status: 'Selected',
+                            }
+                        })
+                        .then(fuentes =>{
+                            let usuarioLogueado = req.session.usuario;
     
                         
-                        if(usuarioLogueado == undefined){
-    
-                            usuarioLogueado = ''
-    
-                        }
-    
-                        res.render('nosotros',{carousel,usuarioLogueado,redessociales,nosotros,resultados});
+                            if(usuarioLogueado == undefined){
         
+                                usuarioLogueado = ''
+        
+                            }
+        
+                            res.render('nosotros',{carousel,usuarioLogueado,redessociales,nosotros,resultados,fuentes});
+            
+    
+                        })
                     })
         
                 })
@@ -102,16 +120,25 @@ const indexController = {
                     
                     db.RedesSociales.findAll()
                     .then(redessociales => {
-                        let usuarioLogueado = req.session.usuario;
+
+                        db.Fuentes.findAll({
+                            where: {
+                                status: 'Selected',
+                            }
+                        })
+                        .then(fuentes =>{
+                            let usuarioLogueado = req.session.usuario;
                         
-                        if(usuarioLogueado == undefined){
+                            if(usuarioLogueado == undefined){
+        
+                                usuarioLogueado = ''
+        
+                            }
+        
+        
+                            res.render('productos',{productos, carousel,usuarioLogueado,redessociales,resultados,fuentes});
     
-                            usuarioLogueado = ''
-    
-                        }
-    
-    
-                        res.render('productos',{productos, carousel,usuarioLogueado,redessociales,resultados});
+                        })
         
                     })
     
@@ -140,15 +167,24 @@ const indexController = {
                         }
                     })
                     .then(caracteristicas => {
-                        let usuarioLogueado = req.session.usuario;
+
+                        db.Fuentes.findAll({
+                            where: {
+                                status: 'Selected',
+                            }
+                        })
+                        .then(fuentes =>{
+                            let usuarioLogueado = req.session.usuario;
     
-                        if(usuarioLogueado == undefined){
+                            if(usuarioLogueado == undefined){
+        
+                                usuarioLogueado = ''
+        
+                            }
+        
+                            res.render('DetalleProducto',{usuarioLogueado,producto,redessociales,caracteristicas,resultados,fuentes})
     
-                            usuarioLogueado = ''
-    
-                        }
-    
-                        res.render('DetalleProducto',{usuarioLogueado,producto,redessociales,caracteristicas,resultados})
+                        })
         
                     })
         
@@ -179,19 +215,25 @@ const indexController = {
                     
                     db.RedesSociales.findAll()
                     .then(redessociales => {
-                        let usuarioLogueado = req.session.usuario;
+                        db.Fuentes.findAll({
+                            where: {
+                                status: 'Selected',
+                            }
+                        })
+                        .then(fuentes => {
+                            let usuarioLogueado = req.session.usuario;
                         
-                        if(usuarioLogueado == undefined){
-    
-                            usuarioLogueado = ''
-    
-                        }
-    
-                        console.log('Resultado Precio:');
-                        console.log(servicios[0].precio);
-
-                        res.render('servicios',{servicios, carousel,usuarioLogueado,redessociales,resultados});
+                            if(usuarioLogueado == undefined){
         
+                                usuarioLogueado = ''
+        
+                            }
+        
+    
+                            res.render('servicios',{servicios, carousel,usuarioLogueado,redessociales,resultados,fuentes});
+            
+    
+                        })
                     })
     
                 })
@@ -219,16 +261,24 @@ const indexController = {
                         }
                     })
                     .then(caracteristicas => {
-                        let usuarioLogueado = req.session.usuario;
+                        db.Fuentes.findAll({
+                            where: {
+                                status: 'Selected',
+                            }
+                        })
+                        .then(fuentes => {
+                            let usuarioLogueado = req.session.usuario;
     
-                        if(usuarioLogueado == undefined){
-    
-                            usuarioLogueado = ''
-    
-                        }
-    
-                        res.render('DetalleServicio',{usuarioLogueado,servicio,redessociales,caracteristicas,resultados})
+                            if(usuarioLogueado == undefined){
         
+                                usuarioLogueado = ''
+        
+                            }
+        
+                            res.render('DetalleServicio',{usuarioLogueado,servicio,redessociales,caracteristicas,resultados,fuentes})
+            
+    
+                        })
                     })
         
                 })
@@ -331,17 +381,25 @@ const indexController = {
                 
                 db.RedesSociales.findAll()
                 .then(redessociales => {
-                    let usuarioLogueado = req.session.usuario;
+                    db.Fuentes.findAll({
+                        where: {
+                            status: 'Selected',
+                        }
+                    })
+                    .then(fuentes => {
+                        let usuarioLogueado = req.session.usuario;
 
                     
-                    if(usuarioLogueado == undefined){
-
-                        usuarioLogueado = ''
-
-                    }
-
-                    res.render('contactenos',{resultados, carousel,usuarioLogueado,redessociales});
+                        if(usuarioLogueado == undefined){
     
+                            usuarioLogueado = ''
+    
+                        }
+    
+                        res.render('contactenos',{resultados, carousel,usuarioLogueado,redessociales,fuentes});
+        
+    
+                    })
                 })
 
             })

@@ -91,6 +91,7 @@
     
     .internal-container-iconos{
         width: 50%;
+        height: 200px;
         border: 1px solid grey;
         display: flex;
         flex-direction: column;
