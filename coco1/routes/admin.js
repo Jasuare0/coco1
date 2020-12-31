@@ -513,6 +513,7 @@ router.get('/inicio/servicios/sacar/:id', serviciosController.sacarServiciosInic
 router.get('/fuentescolores', fuentesColoresController.traerfuentesColores);
 router.post('/fuentescolores/coloresbarranavegacion', fuentesColoresController.coloresBarraNavegacion);
 router.post('/fuentescolores/coloresBody', fuentesColoresController.coloresBody);
+router.post('/fuentescolores/fuente', fuentesColoresController.fuente);
 
 
 module.exports = router;

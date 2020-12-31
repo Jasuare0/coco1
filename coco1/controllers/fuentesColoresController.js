@@ -15,7 +15,18 @@ const fuentesColoresController = {
         if(usuarioLogueado != ''){
             db.Inicio.findAll()
             .then(resultados => {
-                res.render('adminEditFuentesColores',{usuarioLogueado, resultados: resultados});
+                db.Fuentes.findAll()
+                .then(fuentes => {
+                    db.Fuentes.findAll({
+                        where: {
+                            status: 'Selected',
+                        }
+                    })
+                    .then(fuenteSeleccionada => {
+                        res.render('adminEditFuentesColores',{usuarioLogueado, resultados: resultados,fuentes,fuenteSeleccionada});
+
+                    })
+                })
             })
 
         }else{
@@ -172,8 +183,42 @@ const fuentesColoresController = {
         }
 
 
-    }
+    },
+    'fuente': function(req,res){
 
+
+        db.Fuentes.update(
+            {
+                status: '',
+            },
+            {
+                where: {
+                    status: 'Selected',
+                }
+            }
+        )
+
+        db.Fuentes.update(
+            {
+                status: 'Selected',
+            },
+            {
+                where: {
+                    css: req.body.tipoFuente,
+                }
+            }
+        )
+        .then(fuenteActualizada => {
+
+            
+            let ubicacionPrevia = 'FuentesColores';
+            let direccionPrevia = 'fuentescolores';
+
+            res.redirect('/admin/confirmacionaccionbd/?ubicacionprevia='+ ubicacionPrevia +'&direccionprevia=' + direccionPrevia);
+                                                          
+
+        })
+    }
 
 }
 
