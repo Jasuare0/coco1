@@ -71,7 +71,18 @@ const mailController = {
         .then(resultados => {
             db.RedesSociales.findAll()
             .then(redessociales => {
-                res.render('graciasContactarnos',{usuarioLogueado,redessociales, resultados});
+
+                db.Fuentes.findAll({
+                    where: {
+                        status: 'Selected',
+                    }
+                })
+                .then(fuentes =>{
+
+                    res.render('graciasContactarnos',{usuarioLogueado,redessociales, resultados,fuentes});
+
+                })
+
     
             })
     
