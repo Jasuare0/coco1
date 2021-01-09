@@ -13,6 +13,9 @@ module.exports = {
       },
       'imagen': {
         type: Sequelize.TEXT,
+      },
+      'ubicacion': {
+        type: Sequelize.STRING,
       }
     
     });
