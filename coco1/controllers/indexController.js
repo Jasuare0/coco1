@@ -34,17 +34,30 @@ const indexController = {
                                 }
                             })
                             .then(fuentes => {
-                                let usuarioLogueado = req.session.usuario;
+                                db.Servicios.findAll({
+                            
+                                    where: {
+                                        pagina_inicio: 'Si'
+                                    },
+    
+                                    include: [{association: "imagenesServicios"}]
+                                })
+                                .then(servicios => {
+                                    let usuarioLogueado = req.session.usuario;
 
-                                if(usuarioLogueado == undefined){
+                                    if(usuarioLogueado == undefined){
+        
+                                        usuarioLogueado = ''
+        
+                                    }
     
-                                    usuarioLogueado = ''
-    
-                                }
+                                    console.log('Servicios: ');
+                                    console.log(servicios.length);
 
+                                    res.render('index',{resultados,clientes,carousel,usuarioLogueado,redessociales, productos,fuentes,servicios});
+        
     
-                                res.render('index',{resultados,clientes,carousel,usuarioLogueado,redessociales, productos,fuentes});
-    
+                                })
                             })
     
                         })

@@ -59,62 +59,141 @@
       </div>
     </div>
 
-    <div class="external-container-section">
+<!-- INICIO PRODUCTOS -->
+<!-- //////////////// -->
 
-      <div class="internal-container-section">
-        <h2 class="header-section"><%= resultados[2].value %></h2>
-      </div>
+    <% if(productos.length != 0) {%>
+      <div class="external-container-section">
 
-    </div>
-
-
-    <div class="external-container-section">
-
-      <div class="internal-container-section">
-        <div class="external-container-imagenes">
-
-          <% for(let i=0; i<productos.length; i++) {%>
-            <div class="internal-container-imagenes">
-              <% if(productos[i].imagenesProductos != '') { %>
-                <img src="/images/productos/<%= productos[i].imagenesProductos[0].imagen %>" alt="" class="imagen-productos">
-
-              <% } %>
-              <h2 class="tituloNombreProducto"><%= productos[i].nombre %></h2>
-              <p class="paragraph-productos">
-                <%= productos[i].descripcion %>
-              </p>
-
-              <% if(productos[i].precio != '') { %>
-                <p class="paragraph-productos">
-                  <s>Precio: $ <%= productos[i].precio %></s>
-                </p>
-              <% }else{ %>
-                <!-- <p class="paragraph-productos">
-                  <br>
-                </p> -->
-              <% } %>
-
-              <% if(productos[i].precio != '') {  %>
-                <p class="paragraph-productos">
-                  <b>Promoción: $ <%= productos[i].preciocondescuento %></b>
-                </p>
-              <% }else{  %>
-                <!-- <p class="paragraph-productos">
-                  <br>
-                </p> -->
-              <% } %>
-
-              <a href="/productos/<%= productos[i].id %>">Ver mas ...</a>
-            </div>
-  
-          <% } %>
-
-
+        <div class="internal-container-section">
+          <h2 class="header-section">PRODUCTOS</h2>
         </div>
-
+  
       </div>
+  
+  
+      <div class="external-container-section">
+  
+        <div class="internal-container-section">
+          <div class="external-container-imagenes">
+  
+            <% for(let i=0; i<productos.length; i++) {%>
+              <div class="internal-container-imagenes">
+                <% if(productos[i].imagenesProductos != '') { %>
+                  <img src="/images/productos/<%= productos[i].imagenesProductos[0].imagen %>" alt="" class="imagen-productos">
+  
+                <% } %>
+                <h2 class="tituloNombreProducto"><%= productos[i].nombre %></h2>
+                <p class="paragraph-productos">
+                  <%= productos[i].descripcion %>
+                </p>
+  
+                <% if(productos[i].precio != '') { %>
+                  <p class="paragraph-productos">
+                    <s>Precio: $ <%= productos[i].precio %></s>
+                  </p>
+                <% }else{ %>
+                  <!-- <p class="paragraph-productos">
+                    <br>
+                  </p> -->
+                <% } %>
+  
+                <% if(productos[i].precio != '') {  %>
+                  <p class="paragraph-productos">
+                    <b>Promoción: $ <%= productos[i].preciocondescuento %></b>
+                  </p>
+                <% }else{  %>
+                  <!-- <p class="paragraph-productos">
+                    <br>
+                  </p> -->
+                <% } %>
+  
+                <a href="/productos/<%= productos[i].id %>">Ver mas ...</a>
+              </div>
+    
+            <% } %>
+  
+  
+          </div>
+  
+        </div>
+  
+      </div>
+  
+      
+    <% } %>
 
-    </div>
+<!-- FIN PRODUCTOS -->
+<!-- //////////////// -->
+
+
+<!-- INICIO SERVICIOS -->
+<!-- //////////////// -->
+
+
+    <% if(servicios.length != 0) {%>
+      <div class="external-container-section">
+
+        <div class="internal-container-section">
+          <h2 class="header-section">SERVICIOS</h2>
+        </div>
+  
+      </div>
+  
+      <div class="external-container-section">
+
+        <div class="internal-container-section">
+          <div class="external-container-imagenes">
+  
+            <% for(let i=0; i<servicios.length; i++) {%>
+              <div class="internal-container-imagenes">
+                <% if(servicios[i].imagenesServicios != '') { %>
+                  <img src="/images/productos/<%= servicios[i].imagenesServicios[0].imagen %>" alt="" class="imagen-productos">
+  
+                <% } %>
+                <h2 class="tituloNombreProducto"><%= servicios[i].nombre %></h2>
+                <p class="paragraph-productos">
+                  <%= servicios[i].descripcion %>
+                </p>
+  
+                <% if(servicios[i].precio != '') { %>
+                  <p class="paragraph-productos">
+                    <s>Precio: $ <%= servicios[i].precio %></s>
+                  </p>
+                <% }else{ %>
+                  <!-- <p class="paragraph-productos">
+                    <br>
+                  </p> -->
+                <% } %>
+  
+                <% if(servicios[i].precio != '' || servicios[i].precio.length != 0 ) {  %>
+                  <p class="paragraph-productos">
+                    <b>Promoción: $ <%= servicios[i].preciocondescuento %></b>
+                  </p>
+                <% }else{  %>
+                  <!-- <p class="paragraph-productos">
+                    <br>
+                  </p> -->
+                <% } %>
+  
+                <a href="/productos/<%= servicios[i].id %>">Ver mas ...</a>
+              </div>
+  
+            <% } %>
+  
+  
+          </div>
+  
+        </div>
+  
+      </div>
+      
+
+    <% } %>
+
+
+<!-- FIN PRODUCTOS -->
+<!-- //////////////// -->
 
 
     <div class="external-container-section">

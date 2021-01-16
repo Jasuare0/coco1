@@ -1,10 +1,10 @@
 module.exports = {
   "development": {
-    //"username": "root",
-    "username": "db_deploy",
-    //"password": "root",
-    "password": "DBdeploy2020",
-    // "password": "DBdeploy2020!",
+    "username": "root",
+    //"username": "db_deploy",
+    "password": "root",
+    //"password": "DBdeploy2020",
+    //"password": "DBdeploy2020!",
     "database": "innovatecoco1",
     "host": "localhost",
     "dialect": "mysql"
