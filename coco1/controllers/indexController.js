@@ -51,8 +51,8 @@ const indexController = {
         
                                     }
     
-                                    console.log('Servicios: ');
-                                    console.log(servicios.length);
+                                    // console.log('Servicios: ');
+                                    // console.log(servicios.length);
 
                                     res.render('index',{resultados,clientes,carousel,usuarioLogueado,redessociales, productos,fuentes,servicios});
         
