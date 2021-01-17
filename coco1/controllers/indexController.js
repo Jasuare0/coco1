@@ -43,19 +43,28 @@ const indexController = {
                                     include: [{association: "imagenesServicios"}]
                                 })
                                 .then(servicios => {
-                                    let usuarioLogueado = req.session.usuario;
 
-                                    if(usuarioLogueado == undefined){
-        
-                                        usuarioLogueado = ''
-        
-                                    }
-    
-                                    // console.log('Servicios: ');
-                                    // console.log(servicios.length);
 
-                                    res.render('index',{resultados,clientes,carousel,usuarioLogueado,redessociales, productos,fuentes,servicios});
+                                    db.Productos.findAll()
+                                    .then(existenProductos => {
+
+                                        db.Servicios.findAll()
+                                        .then(existenServicios => {
+                                            let usuarioLogueado = req.session.usuario;
+
+                                            if(usuarioLogueado == undefined){
+                
+                                                usuarioLogueado = ''
+                
+                                            }
+            
+                                            res.render('index',{resultados,clientes,carousel,usuarioLogueado,redessociales, productos,fuentes,servicios,existenServicios,existenProductos});
+               
         
+                                        })
+
+                                    })
+
     
                                 })
                             })
@@ -91,18 +100,28 @@ const indexController = {
                             }
                         })
                         .then(fuentes =>{
-                            let usuarioLogueado = req.session.usuario;
+                            
+                            db.Productos.findAll()
+                            .then(existenProductos => {
+
+                                db.Servicios.findAll()
+                                .then(existenServicios => {
+                                    let usuarioLogueado = req.session.usuario;
     
                         
-                            if(usuarioLogueado == undefined){
-        
-                                usuarioLogueado = ''
-        
-                            }
-        
-                            res.render('nosotros',{carousel,usuarioLogueado,redessociales,nosotros,resultados,fuentes});
+                                    if(usuarioLogueado == undefined){
+                
+                                        usuarioLogueado = ''
+                
+                                    }
+                
+                                    res.render('nosotros',{carousel,usuarioLogueado,redessociales,nosotros,resultados,fuentes,existenProductos,existenServicios});
+                    
             
     
+                                })
+    
+                            })
                         })
                     })
         
@@ -140,17 +159,28 @@ const indexController = {
                             }
                         })
                         .then(fuentes =>{
-                            let usuarioLogueado = req.session.usuario;
+
+
+                            db.Productos.findAll()
+                            .then(existenProductos => {
+
+                                db.Servicios.findAll()
+                                .then(existenServicios => {
+                                    let usuarioLogueado = req.session.usuario;
                         
-                            if(usuarioLogueado == undefined){
+                                    if(usuarioLogueado == undefined){
+                
+                                        usuarioLogueado = ''
+                
+                                    }
+                
+                
+                                    res.render('productos',{productos, carousel,usuarioLogueado,redessociales,resultados,fuentes,existenProductos,existenServicios});
+            
         
-                                usuarioLogueado = ''
-        
-                            }
-        
-        
-                            res.render('productos',{productos, carousel,usuarioLogueado,redessociales,resultados,fuentes});
-    
+                                })
+                            })
+
                         })
         
                     })
@@ -187,16 +217,25 @@ const indexController = {
                             }
                         })
                         .then(fuentes =>{
-                            let usuarioLogueado = req.session.usuario;
+
+                            db.Productos.findAll()
+                            .then(existenProductos => {
+                                db.Servicios.findAll()
+                                .then(existenServicios => {
+                                    let usuarioLogueado = req.session.usuario;
     
-                            if(usuarioLogueado == undefined){
+                                    if(usuarioLogueado == undefined){
+                
+                                        usuarioLogueado = ''
+                
+                                    }
+                
+                                    res.render('DetalleProducto',{usuarioLogueado,producto,redessociales,caracteristicas,resultados,fuentes,existenProductos,existenServicios})
+            
         
-                                usuarioLogueado = ''
-        
-                            }
-        
-                            res.render('DetalleProducto',{usuarioLogueado,producto,redessociales,caracteristicas,resultados,fuentes})
-    
+                                })                                
+                            })
+
                         })
         
                     })
@@ -234,17 +273,26 @@ const indexController = {
                             }
                         })
                         .then(fuentes => {
-                            let usuarioLogueado = req.session.usuario;
+
+                            db.Productos.findAll()
+                            .then(existenProductos => {
+                                db.Servicios.findAll()
+                                .then(existenServicios => {
+                                    let usuarioLogueado = req.session.usuario;
                         
-                            if(usuarioLogueado == undefined){
-        
-                                usuarioLogueado = ''
-        
-                            }
-        
-    
-                            res.render('servicios',{servicios, carousel,usuarioLogueado,redessociales,resultados,fuentes});
+                                    if(usuarioLogueado == undefined){
+                
+                                        usuarioLogueado = ''
+                
+                                    }
+                
             
+                                    res.render('servicios',{servicios, carousel,usuarioLogueado,redessociales,resultados,fuentes,existenProductos,existenServicios});
+                    
+        
+                                })                                
+                            })
+
     
                         })
                     })
@@ -280,16 +328,24 @@ const indexController = {
                             }
                         })
                         .then(fuentes => {
-                            let usuarioLogueado = req.session.usuario;
+
+                            db.Productos.findAll()
+                            .then(existenProductos => {
+                                db.Servicios.findAll()
+                                .then(existenServicios => {
+                                    let usuarioLogueado = req.session.usuario;
     
-                            if(usuarioLogueado == undefined){
+                                    if(usuarioLogueado == undefined){
+                
+                                        usuarioLogueado = ''
+                
+                                    }
+                
+                                    res.render('DetalleServicio',{usuarioLogueado,servicio,redessociales,caracteristicas,resultados,fuentes,existenProductos,existenServicios})
+                    
         
-                                usuarioLogueado = ''
-        
-                            }
-        
-                            res.render('DetalleServicio',{usuarioLogueado,servicio,redessociales,caracteristicas,resultados,fuentes})
-            
+                                })                                
+                            })
     
                         })
                     })
@@ -400,17 +456,25 @@ const indexController = {
                         }
                     })
                     .then(fuentes => {
-                        let usuarioLogueado = req.session.usuario;
+
+                        db.Productos.findAll()
+                        .then(existenProductos => {
+                            db.Servicios.findAll()
+                            .then(existenServicios => {
+                                let usuarioLogueado = req.session.usuario;
 
                     
-                        if(usuarioLogueado == undefined){
-    
-                            usuarioLogueado = ''
-    
-                        }
-    
-                        res.render('contactenos',{resultados, carousel,usuarioLogueado,redessociales,fuentes});
+                                if(usuarioLogueado == undefined){
+            
+                                    usuarioLogueado = ''
+            
+                                }
+            
+                                res.render('contactenos',{resultados, carousel,usuarioLogueado,redessociales,fuentes,existenProductos,existenServicios});
+                
         
+                            })                            
+                        })
     
                     })
                 })

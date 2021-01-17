@@ -79,7 +79,15 @@ const mailController = {
                 })
                 .then(fuentes =>{
 
-                    res.render('graciasContactarnos',{usuarioLogueado,redessociales, resultados,fuentes});
+
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('graciasContactarnos',{usuarioLogueado,redessociales, resultados,fuentes,existenProductos,existenServicios});
+
+                        })                        
+                    })
 
                 })
 

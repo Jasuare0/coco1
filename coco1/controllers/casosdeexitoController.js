@@ -28,8 +28,17 @@ const casosdeexitoController = {
                             }
                         })
                         .then(fuentes => {
-                        //res.json(casosdeexito)
-                        res.render('casosdeexito',{resultados,usuarioLogueado,redessociales,casosdeexito,fuentes});
+
+                        db.Productos.findAll()
+                        .then(existenProductos => {
+                            db.Servicios.findAll()
+                            .then(existenServicios => {
+                                res.render('casosdeexito',{resultados,usuarioLogueado,redessociales,casosdeexito,fuentes,existenProductos,existenServicios});
+
+                            })
+
+                        })
+
         
 
                         })
