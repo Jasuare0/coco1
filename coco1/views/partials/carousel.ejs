@@ -1,7 +1,8 @@
+<% if(carousel.length != null && carousel.length != 0){ %>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
 
-      <% if(carousel.length != null){ %>
         <% for(let m=0; m<carousel.length; m++){%>
 
             <% if(m==0){ %>
@@ -13,8 +14,6 @@
             <% } %>
 
         <% } %>
-
-      <% } %>
 
     </ol>
     <div class="carousel-inner">
@@ -48,3 +47,5 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+
+<% } %>
