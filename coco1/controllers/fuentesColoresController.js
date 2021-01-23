@@ -23,7 +23,15 @@ const fuentesColoresController = {
                         }
                     })
                     .then(fuenteSeleccionada => {
-                        res.render('adminEditFuentesColores',{usuarioLogueado, resultados: resultados,fuentes,fuenteSeleccionada});
+
+                        db.Productos.findAll()
+                        .then(existenProductos => {
+                            db.Servicios.findAll()
+                            .then(existenServicios => {
+                                res.render('adminEditFuentesColores',{usuarioLogueado, resultados: resultados,fuentes,fuenteSeleccionada,existenProductos, existenServicios});
+
+                            })
+                        })
 
                     })
                 })

@@ -15,12 +15,29 @@ const usuarioController = {
 
         db.Inicio.findAll()
         .then(resultados => {
-            res.render('login',{validacionUsuario: '', usuarioLogueado, validacionContrasena: '', mensaje: '',resultados: resultados})
+
+            db.Productos.findAll()
+            .then(existenProductos => {
+                db.Servicios.findAll()
+                .then(existenServicios => {
+                    res.render('login',{validacionUsuario: '', usuarioLogueado, validacionContrasena: '', mensaje: '',resultados: resultados,existenProductos,existenServicios})
+
+                })
+
+            })
 
         })
 
     },
     'validacion': function(req,res){
+
+        let usuarioLogueado = req.session.usuario;
+
+        if(usuarioLogueado == undefined){
+
+            usuarioLogueado = ''
+
+        }
 
         db.Usuarios.findOne({
             where: {
@@ -45,14 +62,40 @@ const usuarioController = {
                         // res.render('login',{validacionUsuario: 'Ok', validacionContrasena: 'Ok', mensaje: 'Usuario y Contraseña Correctos!!!'})                        
 
                     }else{
-                        res.render('login',{validacionUsuario: 'Ok', validacionContrasena: 'notOk', mensaje: 'Verificar Contraseña:'})                        
+
+
+                        db.Inicio.findAll()
+                        .then(resultados => {
+                            db.Productos.findAll()
+                            .then(existenProductos => {
+                                db.Servicios.findAll()
+                                .then(existenServicios => {
+                                    res.render('login',{validacionUsuario: 'Ok', validacionContrasena: 'notOk', mensaje: 'Verificar Contraseña:',existenProductos,existenServicios,resultados,usuarioLogueado})                        
+    
+                                })                            
+                            })
+                                
+                        })
                     }
 
                 })
 
             }
             else{
-                res.render('login',{validacionUsuario: 'notOk', validacionContrasena: '', mensaje: 'El usuario ingresado no existe en la base de datos, favor reingresar los datos:'})                        
+
+                db.Inicio.findAll()
+                .then(resultados => {
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('login',{validacionUsuario: 'notOk', validacionContrasena: '', mensaje: 'El usuario ingresado no existe en la base de datos, favor reingresar los datos:',existenProductos,existenServicios,resultados,usuarioLogueado})                        
+    
+                        })
+                    })
+    
+                })
+
 
             }
 

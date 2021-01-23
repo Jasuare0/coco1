@@ -13,12 +13,21 @@ const adminController = {
         }
 
         if(usuarioLogueado != ''){
-            db.Inicio.findAll()
-            .then(resultados => {
-                res.render('admin',{usuarioLogueado, resultados: resultados});
-            })
 
+            db.Productos.findAll()
+            .then(existenProductos => {
+                db.Servicios.findAll()
+                .then(existenServicios => {
+                    db.Inicio.findAll()
+                    .then(resultados => {
+                        res.render('admin',{usuarioLogueado, resultados: resultados,existenProductos,existenServicios});
+                    })
+        
+        
+                })
+            })
         }else{
+
             res.redirect('/users');
 
         }
@@ -70,7 +79,15 @@ const adminController = {
                                     include: [{association: "imagenesServicios"}]
                                 })
                                 .then(servicios => {
-                                    res.render('adminInicio',{resultado,clientes,carouseles,usuarioLogueado,redessociales,productos, resultados: resultado,servicios});
+
+                                    db.Productos.findAll()
+                                    .then(existenProductos => {
+                                        db.Servicios.findAll()
+                                        .then(existenServicios => {
+                                            res.render('adminInicio',{resultado,clientes,carouseles,usuarioLogueado,redessociales,productos, resultados: resultado,servicios,existenProductos,existenServicios});
+
+                                        })                                        
+                                    })
 
                                 })
 
@@ -286,7 +303,15 @@ const adminController = {
             .then(resultados => {
                 db.Nosotros.findAll()
                 .then(nosotros => {
-                    res.render('adminNosotros',{nosotros,usuarioLogueado,resultados});
+
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('adminNosotros',{nosotros,usuarioLogueado,resultados,existenProductos,existenServicios});
+
+                        })
+                    })
         
                 })
     
@@ -441,7 +466,14 @@ const adminController = {
                 })
                 .then(productos => {
     
-                    res.render('adminProductos',{productos,usuarioLogueado,resultados});
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('adminProductos',{productos,usuarioLogueado,resultados,existenProductos,existenServicios});
+
+                        })
+                    })
         
                 })
     
@@ -481,7 +513,15 @@ const adminController = {
                     })
                     .then(caracteristicas => {
 
-                        res.render('adminEditProducto', {producto,caracteristicas,usuarioLogueado,resultados: resultados})
+                        db.Productos.findAll()
+                        .then(existenProductos => {
+                            db.Servicios.findAll()
+                            .then(existenServicios => {
+
+                                res.render('adminEditProducto', {producto,caracteristicas,usuarioLogueado,resultados: resultados,existenProductos,existenServicios})
+
+                            })
+                        })
     
                     })
         
@@ -550,7 +590,15 @@ const adminController = {
 
         db.Inicio.findAll()
         .then(resultados => {
-            res.render('adminCrearProducto',{usuarioLogueado,resultados});
+
+            db.Productos.findAll()
+            .then(existenProductos => {
+                db.Servicios.findAll()
+                .then(existenServicios => {
+                    res.render('adminCrearProducto',{usuarioLogueado,resultados,existenProductos,existenServicios});
+
+                })
+            })
 
         })
 
@@ -621,11 +669,11 @@ const adminController = {
     'edicionImagenProducto': function(req,res){
         
 
-        console.log('Resultado nombre archivo:')
-        console.log(req.files[0].filename)
+        // console.log('Resultado nombre archivo:')
+        // console.log(req.files[0].filename)
 
-        console.log('Resultado req.params.idImagen:')
-        console.log(req.params.idImagen)
+        // console.log('Resultado req.params.idImagen:')
+        // console.log(req.params.idImagen)
 
         if (req.files[0].filename != ''){
 
@@ -728,7 +776,15 @@ const adminController = {
                 .then(producto => {
                     db.Caracteristicas.findByPk(req.params.idCaracteristica)
                     .then(caracteristica =>{
-                        res.render('adminEditCaracteristicaProducto',{producto,caracteristica,usuarioLogueado,resultados})            
+
+                        db.Productos.findAll()
+                        .then(existenProductos => {
+                            db.Servicios.findAll()
+                            .then(existenServicios => {
+                                res.render('adminEditCaracteristicaProducto',{producto,caracteristica,usuarioLogueado,resultados,existenProductos,existenServicios})            
+
+                            })
+                        })
     
                     })
     
@@ -831,7 +887,15 @@ const adminController = {
 
             db.Inicio.findAll()
             .then(resultados => {
-                res.render('adminCrearCaracteristica',{producto,usuarioLogueado,resultados})
+
+                db.Productos.findAll()
+                .then(existenProductos => {
+                    db.Servicios.findAll()
+                    .then(existenServicios => {
+                        res.render('adminCrearCaracteristica',{producto,usuarioLogueado,resultados,existenProductos,existenServicios})
+
+                    })
+                })
 
             })
 
@@ -845,10 +909,10 @@ const adminController = {
 
     'sumarCaracteristicaProducto': function(req,res){
         
-        console.log('Valores que están pasando:')
-        console.log(req.body.titulocaracteristica)
-        console.log(req.body.detallecaracteristica)
-        console.log(req.params.id)
+        // console.log('Valores que están pasando:')
+        // console.log(req.body.titulocaracteristica)
+        // console.log(req.body.detallecaracteristica)
+        // console.log(req.params.id)
 
         let id = req.params.id;
 
@@ -925,7 +989,15 @@ const adminController = {
 
                 db.Inicio.findAll()
                 .then(resultados => {
-                    res.render('agregarProductoInicio',{usuarioLogueado, productos,resultados})
+
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('agregarProductoInicio',{usuarioLogueado, productos,resultados,existenProductos,existenServicios})
+
+                        })
+                    })
 
                 })
 
@@ -1268,7 +1340,15 @@ const adminController = {
             .then(resultados => {
                 db.Carousel.findByPk(req.params.id)
                 .then(carousel =>{
-                    res.render('adminCarousel',{carousel,usuarioLogueado,resultados})
+
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('adminCarousel',{carousel,usuarioLogueado,resultados,existenProductos,existenServicios})
+
+                        })
+                    })
         
                 })
     
@@ -1297,7 +1377,7 @@ const adminController = {
 
 
         let nombreArchivo = req.files;
-        console.log(nombreArchivo)
+        // console.log(nombreArchivo)
 
         if(nombreArchivo == ''){
             let ubicacionPrevia = 'Inicio';
@@ -1348,7 +1428,15 @@ const adminController = {
 
         db.Inicio.findAll()
         .then(resultados => {
-            res.render('adminCrearCarousel',{usuarioLogueado,resultados});
+
+            db.Productos.findAll()
+            .then(existenProductos => {
+                db.Servicios.findAll()
+                .then(existenServicios => {
+                    res.render('adminCrearCarousel',{usuarioLogueado,resultados,existenProductos,existenServicios});
+
+                })
+            })
 
         })
 
@@ -1479,7 +1567,15 @@ const adminController = {
             .then(resultados => {
                 db.ClientesAliados.findByPk(req.params.id)
                 .then(cliente => {
-                    res.render('adminClientes',{usuarioLogueado, cliente,resultados});
+
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('adminClientes',{usuarioLogueado, cliente,resultados,existenProductos,existenServicios});
+
+                        })
+                    })
     
                 })
     
@@ -1559,7 +1655,15 @@ const adminController = {
 
         db.Inicio.findAll()
         .then(resultados => {
-            res.render('adminCrearClientes',{usuarioLogueado,resultados})
+
+            db.Productos.findAll()
+            .then(existenProductos => {
+                db.Servicios.findAll()
+                .then(existenServicios => {
+                    res.render('adminCrearClientes',{usuarioLogueado,resultados,existenProductos,existenServicios})
+
+                })
+            })
 
         })
 

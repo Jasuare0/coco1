@@ -22,8 +22,16 @@ const serviciosController = {
                     include: [{association: "imagenesServicios"}]
                 })
                 .then(servicios => {
+
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('adminServicios',{servicios,usuarioLogueado,resultados,existenProductos,existenServicios});
+
+                        })
+                    })
     
-                    res.render('adminServicios',{servicios,usuarioLogueado,resultados});
         
                 })
     
@@ -63,8 +71,15 @@ const serviciosController = {
                     })
                     .then(caracteristicas => {
 
-                        res.render('adminEditServicio', {servicio,caracteristicas,usuarioLogueado,resultados: resultados})
-    
+                        db.Productos.findAll()
+                        .then(existenProductos => {
+                            db.Servicios.findAll()
+                            .then(existenServicios => {
+                                res.render('adminEditServicio', {servicio,caracteristicas,usuarioLogueado,resultados: resultados, existenProductos, existenServicios})
+
+                            })
+                        })
+
                     })
         
                 })
@@ -132,8 +147,15 @@ const serviciosController = {
 
         db.Inicio.findAll()
         .then(resultados => {
-            res.render('adminCrearServicio',{usuarioLogueado,resultados});
 
+            db.Productos.findAll()
+            .then(existenProductos => {
+                db.Servicios.findAll()
+                .then(existenServicios => {
+                    res.render('adminCrearServicio',{usuarioLogueado,resultados,existenProductos,existenServicios});
+
+                })
+            })
         })
 
     },
@@ -327,7 +349,15 @@ const serviciosController = {
                 .then(servicio => {
                     db.CaracteristicasServicios.findByPk(req.params.idCaracteristica)
                     .then(caracteristica =>{
-                        res.render('adminEditCaracteristicaServicio',{servicio,caracteristica,usuarioLogueado,resultados})            
+
+                        db.Productos.findAll()
+                        .then(existenProductos => {
+                            db.Servicios.findAll()
+                            .then(existenServicios => {
+                                res.render('adminEditCaracteristicaServicio',{servicio,caracteristica,usuarioLogueado,resultados,existenProductos,existenServicios})            
+
+                            })
+                        })
     
                     })
     
@@ -430,7 +460,15 @@ const serviciosController = {
 
             db.Inicio.findAll()
             .then(resultados => {
-                res.render('adminCrearCaracteristicaServicio',{servicio,usuarioLogueado,resultados})
+
+                db.Productos.findAll()
+                .then(existenProductos => {
+                    db.Servicios.findAll()
+                    .then(existenServicios => {
+                        res.render('adminCrearCaracteristicaServicio',{servicio,usuarioLogueado,resultados,existenProductos,existenServicios})
+
+                    })
+                })
 
             })
 
@@ -444,10 +482,10 @@ const serviciosController = {
 
     'sumarCaracteristicaServicio': function(req,res){
         
-        console.log('Valores que están pasando:')
-        console.log(req.body.titulocaracteristica)
-        console.log(req.body.detallecaracteristica)
-        console.log(req.params.id)
+        // console.log('Valores que están pasando:')
+        // console.log(req.body.titulocaracteristica)
+        // console.log(req.body.detallecaracteristica)
+        // console.log(req.params.id)
 
         let id = req.params.id;
 
@@ -524,7 +562,15 @@ const serviciosController = {
 
                 db.Inicio.findAll()
                 .then(resultados => {
-                    res.render('agregarServicioInicio',{usuarioLogueado, servicios,resultados})
+
+                    db.Productos.findAll()
+                    .then(existenProductos => {
+                        db.Servicios.findAll()
+                        .then(existenServicios => {
+                            res.render('agregarServicioInicio',{usuarioLogueado, servicios,resultados,existenProductos,existenServicios})
+
+                        })
+                    })
 
                 })
 

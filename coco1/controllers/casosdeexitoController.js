@@ -74,8 +74,15 @@ const casosdeexitoController = {
 
             .then(casosdeexito => {
 
-                res.render('adminCasosDeExito',{resultados,usuarioLogueado,casosdeexito})
-                
+                db.Productos.findAll()
+                .then(existenProductos => {
+                    db.Servicios.findAll()
+                    .then(existenServicios => {
+
+                        res.render('adminCasosDeExito',{resultados,usuarioLogueado,casosdeexito,existenProductos, existenServicios})
+
+                    })
+                })
             })
 
 
@@ -211,18 +218,18 @@ const casosdeexitoController = {
     'agregarImagen': function (req,res){
 
         let Archivo = req.files;
-        console.log('Resultados de imagen enviada:')
-        console.log(req.files)
+        // console.log('Resultados de imagen enviada:')
+        // console.log(req.files)
 
         if(Archivo != ''){
 
             let NombreArchivo = req.files[0].filename;
 
-            console.log('Resultado Actualización Imagen Caso de Éxito:')
-            console.log(req.files[0].filename);
+            // console.log('Resultado Actualización Imagen Caso de Éxito:')
+            // console.log(req.files[0].filename);
 
-            console.log('Resultado req.params.id:')
-            console.log(req.params.id);
+            // console.log('Resultado req.params.id:')
+            // console.log(req.params.id);
 
 
             db.ImagenesCasosExito.create({
