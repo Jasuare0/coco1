@@ -2,7 +2,10 @@
     
     <div class="external-container-section container-footer">
         <div class="internal-container-section">
-          <h2 class="header-section header-redes-sociales">SÍGUENOS EN NUESTRAS REDES</h2>
+          <% if(redessociales[0].direccionhtml != '' || redessociales[1].direccionhtml != '' || redessociales[2].direccionhtml != '' || redessociales[3].direccionhtml != '') { %>
+            <h2 class="header-section header-redes-sociales">SÍGUENOS EN NUESTRAS REDES</h2>
+
+          <% } %>
           <div class="container-redes-sociales">
 
             <% if(redessociales[0].direccionhtml != '') {%>
