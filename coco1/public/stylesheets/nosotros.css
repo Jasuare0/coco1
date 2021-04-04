@@ -134,7 +134,7 @@
     .external-container-header-nosotros{
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-content: center;
         align-items:flex-start;
         justify-items: center;
@@ -143,8 +143,9 @@
     }
     
     .internal-container-header-nosotros{
-        width: 30%;
-        border-top: 2px solid grey;
+        width: 100%;
+        border-bottom: 2px solid grey;
+        margin-bottom: 20px;
     
     }
     
@@ -155,11 +156,12 @@
     }
     
     .container-paragraph-nosotros{
-        width: 50%;
+        width: 100%;
     }
     
     .paragraph-nosotros{
         text-align: justify;
+
     }
     
     .paragraph-objetivo{
@@ -170,7 +172,7 @@
     .external-container-mision-vision{
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-content: center;
         align-items:flex-start;
         justify-items: center;
@@ -178,7 +180,7 @@
     }
     
     .internal-container-mision-vision{
-        width: 50%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-content: center;
@@ -188,8 +190,19 @@
         
     }
     
+    .header-mision{
+        text-align: center;
+        width: 100%;
+
+    }
+    .header-vision{
+        text-align: center;
+        width: 100%;
+        
+    }
+
     .paragraph-mision{
-        width: 90%;
+        width: 100%;
         text-align: justify;
     }
     
@@ -200,7 +213,7 @@
     .external-container-valores{
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-content: center;
         align-items:flex-start;
         justify-items: center;
@@ -209,7 +222,7 @@
     }
     
     .internal-container-valores{
-        width: 30%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-content: center;
@@ -242,6 +255,138 @@
     }
 
 }
+
+
+/* Celulares alta resolución */
+
+@media only screen and (min-width: 640px) {
+
+    .external-container-header-nosotros{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items:flex-start;
+        justify-items: center;
+        justify-content: space-between;
+    
+    }
+    
+    .internal-container-header-nosotros{
+        width: 100%;
+        border-bottom: 2px solid grey;
+        margin-bottom: 20px;
+    
+    }
+    
+    .header-sobre-nosotros{
+        padding-top: 20px;
+        font-size: 350%;
+    
+    }
+    
+    .container-paragraph-nosotros{
+        width: 100%;
+    }
+    
+    .paragraph-nosotros{
+        text-align: justify;
+
+    }
+    
+    .paragraph-objetivo{
+        text-align: justify;
+    
+    }
+    
+    .external-container-mision-vision{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items:flex-start;
+        justify-items: center;
+        justify-content: space-around;
+    }
+    
+    .internal-container-mision-vision{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items:flex-start;
+        justify-items: center;
+        justify-content: space-between;
+        
+    }
+    
+    .header-mision{
+        text-align: center;
+        width: 100%;
+
+    }
+    .header-vision{
+        text-align: center;
+        width: 100%;
+        
+    }
+
+    .paragraph-mision{
+        width: 100%;
+        text-align: justify;
+    }
+    
+    .paragraph-vision{
+        text-align: justify;
+    }
+    
+    .external-container-valores{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items:flex-start;
+        justify-items: center;
+        justify-content: space-around;
+    
+    }
+    
+    .internal-container-valores{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items:flex-start;
+        justify-items: center;
+        justify-content: space-between;
+    }
+    .header-valor{
+        width: 100%;
+        text-align: center;
+    
+    }
+    
+    .a-icono-valores{
+        width: 100%;
+        text-align: center;
+    
+    
+    }
+    
+    .icons-valores{
+        font-size: 400%;
+        color: black;
+    }
+    
+    .paragraph-valores{
+        text-align: justify;
+        margin-top: 30px;
+    
+    }
+
+}
+
+
 /* LANDSCAPE TABLETS */
 
 @media only screen and (min-width: 768px) {

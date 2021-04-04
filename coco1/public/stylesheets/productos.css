@@ -42,7 +42,7 @@
     .external-container-productos{
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-content: center;
         align-items:center;
         justify-items: center;
@@ -52,9 +52,8 @@
     }
     
     .internal-container-productos{
-        width: 25%;
-        border-right: 2px solid grey;
-        padding-right: 20px;
+        width: 100%;
+
     
     }
     
@@ -64,13 +63,67 @@
     }
     
     .internal-container-paragraph-productos{
-        width: 70%;
+        width: 100%;
     }
     
+    .titulo-producto{
+        text-align: center;
+
+    }
+
     .paragraph-producto{
         text-align: justify;
     }
 }
+
+
+
+/* Celulares alta resolución */
+
+@media only screen and (min-width: 640px) {
+    .external-container-productos{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items:center;
+        justify-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    
+    }
+    
+    .internal-container-productos{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items:center;
+        justify-items: center;
+        justify-content: center;
+    
+    }
+    
+    .imagen-producto{
+        border-radius: 10%;
+        width: 80%;
+    }
+    
+    .internal-container-paragraph-productos{
+        width: 100%;
+    }
+    
+    .titulo-producto{
+        text-align: center;
+
+    }
+
+    .paragraph-producto{
+        text-align: justify;
+    }
+
+}
+
 /* LANDSCAPE TABLETS */
 
 @media only screen and (min-width: 768px) {
