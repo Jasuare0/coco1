@@ -67,7 +67,7 @@ const adminController = {
                                 },
 
                                 include: [{association: "imagenesProductos"}]
-                        })
+                            })
                             .then(productos => {
                                 
                                 db.Servicios.findAll({
